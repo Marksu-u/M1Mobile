@@ -5,7 +5,7 @@ import { SearchContainer, SearchInput, SearchButton, Text } from './styles';
 
 const apiKey = 'MNSHnjoIkSPsM82E/MpAUA==KHC6mN8WSMuOwa0l';
 
-function SearchBar() {
+const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 

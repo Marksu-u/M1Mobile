@@ -2,10 +2,10 @@ import React from "react";
 import { Text, View } from "react-native";
 
 
-const ExercisesScreen = () => (
+const FavoritesScreen = () => (
     <View>
-        <Text>Exercises</Text>
+        <Text>Favorites</Text>
     </View>
 );
 
-export default ExercisesScreen;
+export default FavoritesScreen;
