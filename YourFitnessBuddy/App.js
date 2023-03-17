@@ -1,10 +1,22 @@
-import React from "react";
-import HomeScreen from './src/screens/home/index';
+import React, { useState } from "react";
+import { View } from "react-native";
+import { ThemeProvider } from "styled-components/native";
 
-function App() {
+import BuddyThemes from "./src/components/themeProvider";
+import HomeScreen from "./src/screens/home/index";
+
+export default App = () => {
+  const [theme, setTheme] = useState(BuddyThemes.Ronnie);
+
+  console.log("theme", theme);
+
+  const handleThemeChange = (newTheme) => {
+    setTheme(BuddyThemes[newTheme]);
+  };
+
   return (
-    <HomeScreen />
+    <ThemeProvider theme={theme}>
+      <HomeScreen handleThemeChange={handleThemeChange} />
+    </ThemeProvider>
   );
-}
-
-export default App;
+};

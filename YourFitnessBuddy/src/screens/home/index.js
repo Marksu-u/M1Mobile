@@ -1,25 +1,34 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
+import { useTheme } from "styled-components/native";
 
 import SearchBar from "../../components/searchBar";
 import AppNavigator from "../../components/appNavigator";
 
-import { Container, BackgroundImage, Overlay, Content, Title, Subtitle } from "./styles";
+import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "./styles";
 
-const image = require("../../../src/images/fitnessBuddy.jpg");
+const HomeScreen = ({ handleThemeChange }) => {
+  const theme = useTheme();
 
-const HomeScreen = () => (
-  <Container>
-    <AppNavigator />
-    <BackgroundImage source={image}>
-      <Overlay />
-      <Content>
-        <Title>Your Fitness Buddy</Title>
-        <Subtitle>With Ronnie Coleman</Subtitle>
-        <SearchBar />
-      </Content>
-    </BackgroundImage>
-  </Container>
-);
+  return (
+    <Container>
+      <BackgroundImage source={theme.background} resizeMode="cover">
+        <AppNavigator />
+        <Overlay />
+        <Content>
+          <Title>Your Fitness Buddy</Title>
+          <Subtitle>With {theme.themeName}</Subtitle>
+          <SearchBar />
+          <Text style={{ marginTop: 16 }}>
+            Selected Theme: {theme.themeName}
+          </Text>
+          <Text onPress={() => handleThemeChange("Arnold")}>Arnold</Text>
+          <Text onPress={() => handleThemeChange("Ronnie")}>Ronnie</Text>
+          <Text onPress={() => handleThemeChange("Cbum")}>Cbum</Text>
+        </Content>
+      </BackgroundImage>
+    </Container>
+  );
+};
 
 export default HomeScreen;
