@@ -7,24 +7,21 @@ import AppNavigator from "../../components/appNavigator";
 
 import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "./styles";
 
-const HomeScreen = ({ handleThemeChange }) => {
+const HomeScreen = () => {
   const theme = useTheme();
 
   return (
     <Container>
-      <BackgroundImage source={theme.background} resizeMode="cover">
+      <BackgroundImage source={theme.image} resizeMode="cover">
         <AppNavigator />
         <Overlay />
         <Content>
           <Title>Your Fitness Buddy</Title>
-          <Subtitle>With {theme.themeName}</Subtitle>
+          <Subtitle>With {theme.title}</Subtitle>
           <SearchBar />
-          <Text style={{ marginTop: 16 }}>
-            Selected Theme: {theme.themeName}
-          </Text>
-          <Text onPress={() => handleThemeChange("Arnold")}>Arnold</Text>
-          <Text onPress={() => handleThemeChange("Ronnie")}>Ronnie</Text>
-          <Text onPress={() => handleThemeChange("Cbum")}>Cbum</Text>
+          <Subtitle>
+            Selected Theme: {theme.title}
+          </Subtitle>
         </Content>
       </BackgroundImage>
     </Container>

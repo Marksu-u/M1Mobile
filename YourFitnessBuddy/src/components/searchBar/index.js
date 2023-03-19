@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { SearchContainer, SearchInput, SearchButton, Text } from './styles';
 
-const apiKey = 'MNSHnjoIkSPsM82E/MpAUA==KHC6mN8WSMuOwa0l';
+const apiKey = 'NH2uyJqbET7PnGIREbPcfkTk6ubhVaQFGYVVkN8A';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');

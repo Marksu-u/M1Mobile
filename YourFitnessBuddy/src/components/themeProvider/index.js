@@ -1,5 +1,6 @@
+
 const imageA = require("../../../src/images/ArnoldBuddy.jpg");
-const imageR = "../../../src/images/RonnieBuddy.jpg";
+const imageR = require("../../../src/images/RonnieBuddy.jpg");
 const imageC = require("../../../src/images/CbumBuddy.png");
 
 const BuddyThemes = {
