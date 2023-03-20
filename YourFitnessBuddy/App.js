@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { View, Button } from "react-native";
 import { ThemeProvider } from "styled-components/native";
 
 import BuddyThemes from "./src/components/themeProvider";

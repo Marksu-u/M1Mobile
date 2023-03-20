@@ -3,7 +3,7 @@ import { View, Button } from "react-native";
 
 const ThemeHandler = ({ handleThemeChange }) => {
   return (
-    <View style={{ marginVertical: 10 }}>
+    <View>
       <Button title="Arnold" onPress={() => handleThemeChange("Arnold")} />
       <Button title="Ronnie" onPress={() => handleThemeChange("Ronnie")} />
       <Button title="Cbum" onPress={() => handleThemeChange("Cbum")} />

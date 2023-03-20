@@ -1,12 +1,23 @@
 import axios from 'axios';
+import { BASE_API_URL, BASE_API_KEY } from './config';
 
-import { BASE_URL, BASE_KEY } from './config';
+const options = {
+  headers: {
+    'X-API-KEY': BASE_API_KEY,
+  }
+};
 
 export const fetchInspirationalQuotes = async () => {
-  const url = `${BASE_URL}/quotes?category=inspirational`;
-  const headers = {
-    'X-API-KEY': BASE_KEY,
-  };
-  const response = await axios.get(url, { headers });
+  return api = await axios.fetch(`${BASE_API_URL}/quotes.category=inspirational`, { options }).json();
+};
+
+export const fetchExercicesByMuscle = async ( query ) => {
+  const url = `${BASE_API_URL}/exercices?muscle=${query}`;
+  const response = await axios.get(url, headers );
   return response.data;
 };
+
+
+  // const url = `${BASE_API_URL}/quotes?category=inspirational`;
+  // const response = await axios.get(url, headers );
+  // return response.data;

@@ -1,6 +1,8 @@
-import React from "react";
-import { Text, View, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, Button } from "react-native";
 import { useTheme } from "styled-components/native";
+
+import { fetchInspirationalQuotes } from "../../config/routes";
 
 import SearchBar from "../../components/searchBar";
 import AppNavigator from "../../components/appNavigator";
@@ -9,6 +11,18 @@ import { Container, Overlay, Content, Title, Subtitle, BackgroundImage, Quote } 
 
 const HomeScreen = () => {
   const theme = useTheme();
+  const [quote, setQuote] = useState("");
+
+  const fetchQuotes = async () => {
+    const response = await fetchInspirationalQuotes();
+    const quotes = response.data;
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    setQuote(randomQuote);
+  };
+
+  useEffect(() => {
+    fetchQuotes();
+  }, []);
 
   return (
     <Container>
@@ -19,7 +33,8 @@ const HomeScreen = () => {
           <Title>Your Fitness Buddy</Title>
           <Subtitle>With {theme.title}</Subtitle>
           <SearchBar />
-          <Quote>{theme.motivation}</Quote>
+          <Button title="Refresh Quote" onPress={fetchQuotes} />
+          <Quote>{quote}</Quote>
         </Content>
       </BackgroundImage>
     </Container>
