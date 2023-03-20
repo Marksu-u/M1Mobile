@@ -63,4 +63,4 @@ yarn-error.log
 .metro-health-check*
 
 # Environment variables
-/src/config/.env
+src/config/config.js
