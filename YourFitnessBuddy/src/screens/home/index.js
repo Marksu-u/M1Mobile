@@ -11,14 +11,14 @@ import { Container, Overlay, Content, Title, Subtitle, BackgroundImage, Quote } 
 
 const HomeScreen = () => {
   const theme = useTheme();
-  const [quote, setQuote] = useState("");
+  const [fetchQuote, setQuote] = useState({});
 
   const fetchQuotes = async () => {
-    const response = await fetchInspirationalQuotes();
-    const quotes = response.data;
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    setQuote(randomQuote);
+    const res = await fetchInspirationalQuotes();
+    console.log(res.quote);
+    setQuote(res);
   };
+  
 
   useEffect(() => {
     fetchQuotes();
@@ -34,7 +34,7 @@ const HomeScreen = () => {
           <Subtitle>With {theme.title}</Subtitle>
           <SearchBar />
           <Button title="Refresh Quote" onPress={fetchQuotes} />
-          <Quote>{quote}</Quote>
+          <Quote>{fetchQuote.author}</Quote>
         </Content>
       </BackgroundImage>
     </Container>
@@ -42,3 +42,5 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+

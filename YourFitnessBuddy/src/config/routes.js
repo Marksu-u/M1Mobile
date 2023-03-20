@@ -8,8 +8,14 @@ const options = {
 };
 
 export const fetchInspirationalQuotes = async () => {
-  return api = await axios.fetch(`${BASE_API_URL}/quotes.category=inspirational`, { options }).json();
+  try {
+    const res = await axios.get(`${BASE_API_URL}/quotes?category=inspirational`, options);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
+
 
 export const fetchExercicesByMuscle = async ( query ) => {
   const url = `${BASE_API_URL}/exercices?muscle=${query}`;
