@@ -5,7 +5,7 @@ import { useTheme } from "styled-components/native";
 import SearchBar from "../../components/searchBar";
 import AppNavigator from "../../components/appNavigator";
 
-import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "./styles";
+import { Container, Overlay, Content, Title, Subtitle, BackgroundImage, Quote } from "./styles";
 
 const HomeScreen = () => {
   const theme = useTheme();
@@ -19,9 +19,7 @@ const HomeScreen = () => {
           <Title>Your Fitness Buddy</Title>
           <Subtitle>With {theme.title}</Subtitle>
           <SearchBar />
-          <Subtitle>
-            Selected Theme: {theme.title}
-          </Subtitle>
+          <Quote>{theme.motivation}</Quote>
         </Content>
       </BackgroundImage>
     </Container>

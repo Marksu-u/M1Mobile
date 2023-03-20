@@ -41,3 +41,10 @@ export const Subtitle = styled.Text`
   color: white;
   margin-bottom: 10px;
 `;
+
+export const Quote = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: azure;
+  `;
