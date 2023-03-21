@@ -22,8 +22,3 @@ export const fetchExercicesByMuscle = async ( query ) => {
   const response = await axios.get(url, headers );
   return response.data;
 };
-
-
-  // const url = `${BASE_API_URL}/quotes?category=inspirational`;
-  // const response = await axios.get(url, headers );
-  // return response.data;
