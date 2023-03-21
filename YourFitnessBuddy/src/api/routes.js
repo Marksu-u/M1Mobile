@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_API_URL, BASE_API_KEY } from './config';
+import { BASE_API_URL, BASE_API_KEY } from '../config/config';
 
 const options = {
   headers: {

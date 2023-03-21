@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import { Text, View, Button } from "react-native";
 import { useTheme } from "styled-components/native";
 
-import { fetchInspirationalQuotes } from "../../config/routes";
+import { fetchInspirationalQuotes } from "../../api/routes";
 
 import SearchBar from "../../components/searchBar";
 import AppNavigator from "../../components/appNavigator";
+import Quote from "../../components/quote";
 
-import { Container, Overlay, Content, Title, Subtitle, BackgroundImage, Quote } from "./styles";
+import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "./styles";
 
 const HomeScreen = () => {
   const theme = useTheme();
-  const [fetchQuote, setQuote] = useState({});
+  const [quotes, setQuote] = useState([]);
 
   const fetchQuotes = async () => {
     const res = await fetchInspirationalQuotes();
-    console.log(res.quote);
+    console.log(res);
     setQuote(res);
+    console.log("res : ", quotes);
   };
   
 
@@ -34,7 +36,9 @@ const HomeScreen = () => {
           <Subtitle>With {theme.title}</Subtitle>
           <SearchBar />
           <Button title="Refresh Quote" onPress={fetchQuotes} />
-          <Quote>{fetchQuote.author}</Quote>
+          {quotes.map((data) => {
+            return <Quote author={data.author} quote={data.quote} />;
+          })}
         </Content>
       </BackgroundImage>
     </Container>
