@@ -8,12 +8,6 @@ padding: 20px;
 width: 90%;
 `;
 
-export const FavoriteButton = styled.TouchableOpacity`
-    background-color: #fff6347;
-    padding: 10px;
-    margin-top: 10px;
-`;
-
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;

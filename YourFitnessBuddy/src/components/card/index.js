@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TouchableOpacity, Text } from 'react-native';
 
-import { CardContainer, Header, Type, Title, Subtitle, Body, Instructions, FavoriteButton } from './styles';
+import { CardContainer, Header, Type, Title, Subtitle, Body, Instructions } from './styles';
 
-const Card = ({ name, type, muscle, equipment, difficulty, instructions }) => {
+const Card = ({ name, type, muscle, equipment, difficulty, instructions, isFavorite, onUnfavorite }) => {
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [favorite, setIsFavorite] = useState(isFavorite);
 
   const handleFavorite = async () => {
     const key = `favorite_${name}`;
@@ -15,6 +15,7 @@ const Card = ({ name, type, muscle, equipment, difficulty, instructions }) => {
     if (storedValue) {
       await AsyncStorage.removeItem(key);
       setIsFavorite(false);
+      onUnfavorite && onUnfavorite();
     } else {
       await AsyncStorage.setItem(key, JSON.stringify({ name, type, muscle, equipment, difficulty, instructions }));
       setIsFavorite(true);
@@ -33,11 +34,10 @@ const Card = ({ name, type, muscle, equipment, difficulty, instructions }) => {
         <Instructions>{instructions}</Instructions>
       </Body>
       <TouchableOpacity onPress={handleFavorite}>
-        <Text>Add to Favorites</Text>
+        <Text>{favorite ? 'Remove from Favorites' : 'Add to Favorites'}</Text>
       </TouchableOpacity>
     </CardContainer>
   );
-
 };
 
 export default Card;

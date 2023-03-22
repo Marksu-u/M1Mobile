@@ -39,6 +39,8 @@ export default FavoritesScreen = ({ navigation }) => {
             equipment={item.equipment}
             difficulty={item.difficulty}
             instructions={item.instructions}
+            isFavorite={true}
+            onUnfavorite={fetchFavoritesData}
         />
     );
 

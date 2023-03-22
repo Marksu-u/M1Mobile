@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
 export const NavContainer = styled.View`
+  position: relative;
+  zIndex: 10;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;

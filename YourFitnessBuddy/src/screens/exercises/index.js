@@ -20,6 +20,7 @@ import {
 export default ExercisesScreen = ({ navigation }) => {
   const theme = useTheme();
   const [exercises, setExercises] = useState([]);
+  const isFavorite = favorites.some(favorite => favorite.name === item.name);
 
   const handleSearchResults = (results) => {
     setExercises(results);
@@ -43,6 +44,7 @@ export default ExercisesScreen = ({ navigation }) => {
       equipment={item.equipment}
       difficulty={item.difficulty}
       instructions={item.instructions}
+      isFavorite={isFavorite}
     />
   );
 
