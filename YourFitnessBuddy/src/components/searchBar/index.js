@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import { SearchContainer, SearchInput, SearchButton, Text } from './styles';
+import { fetchExercises, fetchExercisesByMuscle } from "../../api/routes";
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
