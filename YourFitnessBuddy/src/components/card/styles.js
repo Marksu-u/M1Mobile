@@ -5,9 +5,14 @@ background-color: #fff;
 border-radius: 10px;
 margin-bottom: 20px;
 padding: 20px;
-width: 48%;
+width: 90%;
 `;
 
+export const FavoriteButton = styled.TouchableOpacity`
+    background-color: #fff6347;
+    padding: 10px;
+    margin-top: 10px;
+`;
 
 export const Header = styled.View`
   flex-direction: row;
