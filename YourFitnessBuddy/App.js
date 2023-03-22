@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components/native";
 import ThemeContext from "./src/global/themeContext";
 import BuddyThemes from "./src/components/themeProvider";
 
+import setupAxiosInterceptors from "./src/config/interceptor";
 import Router from "./src/config/router";
 
 export default App = () => {
