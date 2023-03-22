@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 import { SearchContainer, SearchInput, SearchButton, Text } from './styles';
-
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
@@ -13,8 +11,16 @@ const SearchBar = () => {
   };
 
   const handleSearch = async () => {
+    if (query) {
+      const data = await fetchExercisesByMuscle(query);
+      onSearch(data);
+    } else {
+      const data = await fetchExercises();
+      console.log(data)
+      onSearch(data);
+    }
   };
-
+  
   return (
     <SearchContainer>
       <Text>

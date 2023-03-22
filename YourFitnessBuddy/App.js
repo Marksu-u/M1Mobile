@@ -5,7 +5,6 @@ import ThemeContext from "./src/global/themeContext";
 import BuddyThemes from "./src/components/themeProvider";
 
 import Router from "./src/config/router";
-import './src/config/interceptor'
 
 export default App = () => {
   const [theme, setTheme] = useState(BuddyThemes.Ronnie);

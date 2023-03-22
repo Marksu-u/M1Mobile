@@ -3,7 +3,7 @@ import { BASE_API_URL, BASE_API_KEY } from '../config/config';
 
 const options = {
   headers: {
-    'X-API-KEY': BASE_API_KEY,
+    'X-Api-Key': BASE_API_KEY,
   }
 };
 
@@ -16,9 +16,21 @@ export const fetchInspirationalQuotes = async () => {
   }
 };
 
+export const fetchExercises = async () => {
+  try {
+    const res = await axios.get(`${BASE_API_URL}/exercises`, options);
+    console.log(res.data)
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-export const fetchExercicesByMuscle = async ( query ) => {
-  const url = `${BASE_API_URL}/exercices?muscle=${query}`;
-  const response = await axios.get(url, headers );
-  return response.data;
+export const fetchExercisesByMuscle = async (query) => {
+  try {
+    const res = await axios.get(`${BASE_API_URL}/exercises?muscle=${query}`, options);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
