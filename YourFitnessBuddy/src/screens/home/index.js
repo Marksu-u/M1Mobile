@@ -11,7 +11,7 @@ import AppNavigator from "../../components/appNavigator";
 import SearchBar from "../../components/searchBar";
 import Quote from "../../components/quote";
 
-import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "./styles";
+import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "../../global/styles/global.styles";
 
 const HomeScreen = ({ navigation, route }) => {
   const theme = useTheme();
@@ -50,7 +50,6 @@ const HomeScreen = ({ navigation, route }) => {
           <Button title="Get another quote" onPress={() => fetchQuotes()} />
         </Content>
       </BackgroundImage>
-      <ThemeHandler handleThemeChange={handleThemeChange} />
       <AppNavigator navigation={navigation} />
     </Container>
   );

@@ -10,7 +10,6 @@ import ExercisesScreen from '../screens/exercises';
 
 const Stack = createStackNavigator();
 
-// Add handleThemeChange to the Router component props
 export default Router = ({ handleThemeChange }) => {
   return (
     <GlobalSafeArea>
@@ -20,7 +19,6 @@ export default Router = ({ handleThemeChange }) => {
           screenOptions={{
             headerShown: false,
           }}>
-          {/* Pass handleThemeChange to the HomeScreen via initialParams */}
           <Stack.Screen
             name="home"
             component={HomeScreen}

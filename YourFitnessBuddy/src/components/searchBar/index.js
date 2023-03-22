@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import { SearchContainer, SearchInput, SearchButton, Text } from './styles';
 
-const apiKey = 'NH2uyJqbET7PnGIREbPcfkTk6ubhVaQFGYVVkN8A';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
@@ -14,21 +13,10 @@ const SearchBar = () => {
   };
 
   const handleSearch = async () => {
-    const options = {
-      headers: {
-        'X-Api-Key': apiKey
-      }
-    };
-  
-    const response = await axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${query}`, options);
-    setResults(response.data);
   };
 
   return (
     <SearchContainer>
-      <Text>
-        Let's get you jacked!
-      </Text>
       <Text>
         Choose your muscle group buddy!
       </Text>
