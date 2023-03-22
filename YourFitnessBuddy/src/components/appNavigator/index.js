@@ -1,19 +1,25 @@
-// import React from "react";
-// import { View, Text } from "react-native";
+import React from "react";
+import { NavButton, NavContainer, NavButtonText } from "./styles";
 
-// import Router from "../../config/router";
+const AppNavigator = ({ navigation }) => {
 
-// export default function appNavigator() {
-//     return (
-//         <View>
-//         <Button
-//           title="Go to Favorites"
-//           onPress={() => navigation.navigate('Favorites')}
-//         />
-//         <Button
-//           title="Go to Exercises"
-//           onPress={() => navigation.navigate('Exercises')}
-//         />
-//       </View>
-//     );
-// }
+  const handleNav = ( page ) => {
+    navigation.navigate(page);
+  };
+
+  return (
+    <NavContainer>
+      <NavButton onPress={() => handleNav('home')}>
+        <NavButtonText>Home</NavButtonText>
+      </NavButton>
+      <NavButton onPress={() => handleNav('exercises')}>
+        <NavButtonText>Exercises</NavButtonText>
+      </NavButton>
+      <NavButton onPress={() => handleNav('favorites')}>
+        <NavButtonText>Favorites</NavButtonText>
+      </NavButton>
+    </NavContainer>
+  );
+};
+
+export default AppNavigator;

@@ -1,27 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { View, Button } from "react-native";
-import { useTheme } from "styled-components/native";
+import { Button } from "react-native";
 
 import { fetchInspirationalQuotes } from "../../api/routes";
+
+import ThemeHandler from "../../components/themeHandler";
+import { useTheme } from "styled-components/native";
+
+import AppNavigator from "../../components/appNavigator";
 
 import SearchBar from "../../components/searchBar";
 import Quote from "../../components/quote";
 
 import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "./styles";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation, route }) => {
   const theme = useTheme();
+  const { handleThemeChange } = route.params;
+
   const [quotes, setQuote] = useState([]);
 
   const fetchQuotes = async () => {
-    const res = await fetchInspirationalQuotes();
-    console.log(res);
-    const quotesWithIds = res.map((quote, index) => {
-      return { ...quote, id: index };
-    });
-    setQuote(quotesWithIds);
+    try {
+      const res = await fetchInspirationalQuotes();
+      const quotesWithIds = res.map((quote, index) => {
+        return { ...quote, id: index };
+      });
+      setQuote(quotesWithIds);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  
+
   useEffect(() => {
     fetchQuotes();
   }, []);
@@ -34,11 +43,15 @@ const HomeScreen = () => {
           <Title>Your Fitness Buddy</Title>
           <Subtitle>With {theme.title}</Subtitle>
           <SearchBar />
-          {quotes.map((data) => {
-            return <Quote key={data.id} author={data.author} quote={data.quote} />;
-          })}
+          {quotes.length > 0 &&
+            quotes.map((data) => {
+              return <Quote key={data.id} author={data.author} quote={data.quote} />;
+            })}
+          <Button title="Get another quote" onPress={() => fetchQuotes()} />
         </Content>
       </BackgroundImage>
+      <ThemeHandler handleThemeChange={handleThemeChange} />
+      <AppNavigator navigation={navigation} />
     </Container>
   );
 };

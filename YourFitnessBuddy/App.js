@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { ThemeProvider } from "styled-components/native";
 
+import { ThemeProvider } from "styled-components/native";
 import BuddyThemes from "./src/components/themeProvider";
-import HomeScreen from "./src/screens/home/index";
-import ThemeHandler from "./src/components/themeHandler";
+
+import Router from "./src/config/router";
 
 export default App = () => {
-  const [theme, setTheme] = useState(BuddyThemes.Ronnie); // Ronnie is the default theme
+  const [theme, setTheme] = useState(BuddyThemes.Ronnie);
   const handleThemeChange = (newTheme) => {
     setTheme(BuddyThemes[newTheme]);
   };
 
   return (
     <ThemeProvider theme={theme}>
-      <HomeScreen handleThemeChange={handleThemeChange} />
-      <ThemeHandler handleThemeChange={handleThemeChange} />
+      <Router handleThemeChange={handleThemeChange} />
     </ThemeProvider>
   );
 };
