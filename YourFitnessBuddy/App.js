@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { ThemeProvider } from "styled-components/native";
 import ThemeContext from "./src/global/themeContext";
@@ -13,6 +13,10 @@ export default App = () => {
   const handleThemeChange = (newTheme) => {
     setTheme(BuddyThemes[newTheme]);
   };
+
+  useEffect(() => {
+    setupAxiosInterceptors();
+  }, []);
 
   return (
     <ThemeContext.Provider value={handleThemeChange}>
