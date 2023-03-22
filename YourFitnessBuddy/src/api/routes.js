@@ -19,7 +19,6 @@ export const fetchInspirationalQuotes = async () => {
 export const fetchExercises = async () => {
   try {
     const res = await axios.get(`${BASE_API_URL}/exercises`, options);
-    console.log(res.data)
     return res.data;
   } catch (err) {
     console.log(err);
