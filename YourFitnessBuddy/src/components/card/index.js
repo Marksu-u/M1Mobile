@@ -4,23 +4,25 @@ import { TouchableOpacity, Text } from 'react-native';
 
 import { CardContainer, Header, Type, Title, Subtitle, Body, Instructions } from './styles';
 
-const Card = ({ name, type, muscle, equipment, difficulty, instructions, isFavorite, onUnfavorite }) => {
+const Card = ({ name, type, muscle, equipment, difficulty, instructions, isFavorite, onFavoriteChange }) => {
 
   const [favorite, setIsFavorite] = useState(isFavorite);
 
   const handleFavorite = async () => {
     const key = `favorite_${name}`;
     const storedValue = await AsyncStorage.getItem(key);
-
+  
     if (storedValue) {
       await AsyncStorage.removeItem(key);
       setIsFavorite(false);
-      onUnfavorite && onUnfavorite();
+      onFavoriteChange && onFavoriteChange(false);
     } else {
       await AsyncStorage.setItem(key, JSON.stringify({ name, type, muscle, equipment, difficulty, instructions }));
       setIsFavorite(true);
+      onFavoriteChange && onFavoriteChange(true);
     }
   };
+  
 
   return (
     <CardContainer>

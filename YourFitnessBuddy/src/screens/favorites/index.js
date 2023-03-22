@@ -9,55 +9,58 @@ import Card from "../../components/card";
 
 import { Container, Overlay, Content, Title, BackgroundImage } from "../../global/styles/global.styles";
 
-
 export default FavoritesScreen = ({ navigation }) => {
-    const theme = useTheme();
-    const [favorites, setFavorites] = useState([]);
+  const theme = useTheme();
+  const [favorites, setFavorites] = useState([]);
 
-    useEffect(() => {
-        const fetchFavoritesData = async () => {
-            const keys = await AsyncStorage.getAllKeys();
-            const favoriteKeys = keys.filter((key) => key.includes("favorite_"));
-            const favoritesExercises = await AsyncStorage.multiGet(favoriteKeys);
-            const parsedExercises = favoritesExercises.map(([key, value]) => JSON.parse(value));
-            setFavorites(parsedExercises);
-        };
+  const fetchFavoritesData = async () => {
+    const keys = await AsyncStorage.getAllKeys();
+    const favoriteKeys = keys.filter((key) => key.includes("favorite_"));
+    const favoritesExercises = await AsyncStorage.multiGet(favoriteKeys);
+    const parsedExercises = favoritesExercises.map(([key, value]) => JSON.parse(value));
+    setFavorites(parsedExercises);
+  };
 
-        const unsubscribe = navigation.addListener('focus', () => {
-            fetchFavoritesData();
-        });
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      fetchFavoritesData();
+    });
 
-        return unsubscribe;
-    }, [navigation]);
+    return unsubscribe;
+  }, [navigation]);
 
-    const renderItem = ({ item }) => (
-        <Card
-            key={item.name}
-            name={item.name}
-            type={item.type}
-            muscle={item.muscle}
-            equipment={item.equipment}
-            difficulty={item.difficulty}
-            instructions={item.instructions}
-            isFavorite={true}
-            onUnfavorite={fetchFavoritesData}
-        />
-    );
+  const renderItem = ({ item }) => (
+    <Card
+      key={item.name}
+      name={item.name}
+      type={item.type}
+      muscle={item.muscle}
+      equipment={item.equipment}
+      difficulty={item.difficulty}
+      instructions={item.instructions}
+      isFavorite={true}
+      onFavoriteChange={(isFavorited) => {
+        if (!isFavorited) {
+          fetchFavoritesData();
+        }
+      }}
+    />
+  );
 
-    return (
+  return (
     <Container>
       <BackgroundImage source={theme.image} resizeMode="cover">
         <Overlay />
         <Content>
-        <Title>You love those exercises!</Title>
-        <FlatList
+          <Title>You love those exercises!</Title>
+          <FlatList
             data={favorites}
             renderItem={renderItem}
             keyExtractor={(item) => item.name}
           />
         </Content>
-        </BackgroundImage>
-        <AppNavigator navigation={navigation} />
+      </BackgroundImage>
+      <AppNavigator navigation={navigation} />
     </Container>
-    );
-}
+  );
+};
