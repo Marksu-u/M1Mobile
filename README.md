@@ -28,5 +28,5 @@ APIs
 - https://api.api-ninjas.com/v1/quotes?category=inspirational
     pour les quotes 
 
-- https://api.api-ninjas.com/v1/exercises?category=${query}
+- https://api.api-ninjas.com/v1/exercises?muscle=${query}
     pour les exercices selon le muscle renseigné (biceps, triceps, etc...)
