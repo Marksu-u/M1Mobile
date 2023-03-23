@@ -16,7 +16,7 @@ Screens
 
 Components
 - AppNavigator : composant de navigation
-- SearchBar : composant de barre de recherche
+- SearchBar : composant de barre de recherche pour les exercices (muscles)
 - Card : composant d'exercice
 - Quote : composant de citations
 - ThemeProvider : composant de thème (Ronnie, Arnold, Cbum)
