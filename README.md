@@ -8,7 +8,6 @@ Config
     config.sample.js contient les variables d'environnement à renseigner dans un fichier config.js
         Une clé api et une url APi
 
-
 Screens
 - Home : page d'accueil
 - Exercises : page d'exercices avec une barre de recherche
@@ -30,3 +29,5 @@ APIs
 
 - https://api.api-ninjas.com/v1/exercises?muscle=${query}
     pour les exercices selon le muscle renseigné (biceps, triceps, etc...)
+
+    ![GIF](AndroidGIF_1.gif)
