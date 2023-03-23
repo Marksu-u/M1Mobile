@@ -3,12 +3,10 @@ import { Button } from "react-native";
 
 import { fetchInspirationalQuotes } from "../../api/routes";
 
-import ThemeHandler from "../../components/themeHandler";
 import { useTheme } from "styled-components/native";
 
 import AppNavigator from "../../components/appNavigator";
 
-import SearchBar from "../../components/searchBar";
 import Quote from "../../components/quote";
 
 import { Container, Overlay, Content, Title, Subtitle, BackgroundImage } from "../../global/styles/global.styles";
@@ -42,7 +40,6 @@ const HomeScreen = ({ navigation, route }) => {
         <Content>
           <Title>Your Fitness Buddy</Title>
           <Subtitle>With {theme.title}</Subtitle>
-          <SearchBar />
           {quotes.length > 0 &&
             quotes.map((data) => {
               return <Quote key={data.id} author={data.author} quote={data.quote} />;
